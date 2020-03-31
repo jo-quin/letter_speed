@@ -10,10 +10,10 @@
   <h1 id="letter">Hola</h1>
 
   <script type="text/javascript">
-    document.addEventListener("keydown", changeLetter);
+    document.onkeydown = changeLetter;
 
-    function changeLetter() {
-      document.getElementById("letter").innerHTML = "Hey!";
+    function changeLetter(e) {
+      document.getElementById("letter").innerHTML = `${e.key}`;
     }
   </script>
 </body>
