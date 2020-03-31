@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>letter speed</title>
-  </head>
-  <body>
 
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>letter speed</title>
+</head>
+
+<body>
+  <h1 id="letter">Hola</h1>
+
+  <script type="text/javascript">
+    document.addEventListener("keypress", changeLetter);
+
+    function changeLetter() {
+      document.getElementById("letter").innerHTML = "Hey!";
+    }
+  </script>
+</body>
+
 </html>
