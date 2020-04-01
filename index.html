@@ -9,6 +9,7 @@
 <body>
   <h1 id="letter">Press SPACEBAR to start</h1>
   <h1 id="outcome"></h1>
+  <h1 id="timer"></h1>
 
   <script type="text/javascript">
     document.onkeydown = checkLetter;
@@ -16,10 +17,10 @@
     var currentLetter = null;
 
     function checkLetter(e) {
-      if (e.key == currentLetter) {
+      if (e.keyCode == 32) {
+        startTimer();
+      } else if (e.key == currentLetter) {
         document.getElementById('outcome').innerHTML = '👍';
-      } else if (currentLetter == null) {
-
       } else {
         document.getElementById('outcome').innerHTML = '👎';
       }
@@ -37,6 +38,15 @@
 
     function getRandomArbitrary(min, max) {
       return Math.random() * (max - min) + min;
+    }
+
+    function startTimer() {
+      var seconds = 60
+
+      setInterval(function() {
+        document.getElementById("timer").innerHTML = seconds;
+        seconds--;
+      }, 1000);
     }
   </script>
 </body>
