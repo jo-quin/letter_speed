@@ -42,11 +42,16 @@
 
     function startTimer() {
       var seconds = 60
+      updateTimer(seconds);
 
       setInterval(function() {
-        document.getElementById("timer").innerHTML = seconds;
         seconds--;
+        updateTimer(seconds);
       }, 1000);
+    }
+
+    function updateTimer(s) {
+      document.getElementById("timer").innerHTML = s;
     }
   </script>
 </body>
