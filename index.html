@@ -7,19 +7,24 @@
 </head>
 
 <body>
-  <h1 id="letter">Press SPACEBAR to start</h1>
+  <button type="button" id="start">START</button>
+  <h1 id="letter"></h1>
   <h1 id="outcome"></h1>
   <h1 id="timer"></h1>
 
   <script type="text/javascript">
     document.onkeydown = checkLetter;
+    document.getElementById('start').onclick = startGame;
 
     var currentLetter = null;
+    var seconds = 60
+
+    function startGame() {
+      startTimer(seconds);
+    }
 
     function checkLetter(e) {
-      if (e.keyCode == 32) {
-        startTimer();
-      } else if (e.key == currentLetter) {
+      if (e.key == currentLetter) {
         document.getElementById('outcome').innerHTML = '👍';
       } else {
         document.getElementById('outcome').innerHTML = '👎';
@@ -40,13 +45,12 @@
       return Math.random() * (max - min) + min;
     }
 
-    function startTimer() {
-      var seconds = 60
-      updateTimer(seconds);
+    function startTimer(s) {
+      updateTimer(s);
 
       setInterval(function() {
-        seconds--;
-        updateTimer(seconds);
+        s--;
+        updateTimer(s);
       }, 1000);
     }
 
