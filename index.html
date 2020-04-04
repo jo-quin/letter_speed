@@ -4,12 +4,23 @@
 <head>
   <meta charset="utf-8">
   <title>letter speed</title>
+  <style media="screen">
+    .correct {
+      transition: 0.5s;
+      background: rgb(149, 238, 149);
+    }
+
+    .wrong {
+      transition: 0.5s;
+      background: rgb(255, 153, 153);
+    }
+
+  </style>
 </head>
 
 <body>
   <button type="button" id="start">START</button>
   <h1 id="letter"></h1>
-  <h1 id="outcome"></h1>
   <h1 id="timer"></h1>
 
   <script type="text/javascript">
@@ -26,9 +37,11 @@
 
     function checkLetter(e) {
       if (e.key == currentLetter) {
-        document.getElementById('outcome').innerHTML = '👍';
+        document.getElementById('letter').classList.toggle('wrong', false);
+        document.getElementById('letter').classList.toggle('correct', true);
       } else {
-        document.getElementById('outcome').innerHTML = '👎';
+        document.getElementById('letter').classList.toggle('correct', false);
+        document.getElementById('letter').classList.toggle('wrong', true);
       }
       changeLetter();
     }
