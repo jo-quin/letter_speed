@@ -5,16 +5,43 @@
   <meta charset="utf-8">
   <title>letter speed</title>
   <style media="screen">
+    @keyframes correct {
+      0% {
+        background: white;
+      }
+
+      50% {
+        background: rgb(149, 238, 149);
+      }
+
+      100% {
+        background: white;
+      }
+    }
+
+    @keyframes wrong {
+      0% {
+        background: white;
+      }
+
+      50% {
+        background: rgb(255, 153, 153);
+      }
+
+      100% {
+        background: white;
+      }
+    }
+
     .correct {
-      transition: 0.5s;
-      background: rgb(149, 238, 149);
+      animation-name: correct;
+      animation-duration: 0.5s;
     }
 
     .wrong {
-      transition: 0.5s;
-      background: rgb(255, 153, 153);
+      animation-name: wrong;
+      animation-duration: 0.5s;
     }
-
   </style>
 </head>
 
@@ -37,11 +64,9 @@
 
     function checkLetter(e) {
       if (e.key == currentLetter) {
-        document.getElementById('letter').classList.toggle('wrong', false);
-        document.getElementById('letter').classList.toggle('correct', true);
+        outputColor('correct');
       } else {
-        document.getElementById('letter').classList.toggle('correct', false);
-        document.getElementById('letter').classList.toggle('wrong', true);
+        outputColor('wrong');
       }
       changeLetter();
     }
@@ -57,6 +82,16 @@
 
     function getRandomArbitrary(min, max) {
       return Math.random() * (max - min) + min;
+    }
+
+    function outputColor(output) {
+      document.getElementById('letter').classList.remove('correct', 'wrong');
+
+      // the next line triggers a reflow
+      // this is necessary to reset the animation
+      void document.getElementById('letter').offsetWidth;
+
+      document.getElementById('letter').classList.add(output);
     }
 
     function startTimer(s) {
