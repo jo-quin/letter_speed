@@ -20,6 +20,7 @@
     var seconds = 60
 
     function startGame() {
+      hideStartButton();
       runTimer(seconds);
       changeLetter();
     }
@@ -54,6 +55,11 @@
       void document.getElementById('letter').offsetWidth;
 
       document.getElementById('letter').classList.add(output);
+    }
+
+    function hideStartButton() {
+      document.getElementById('start').disabled = true;
+      document.getElementById('start').style.display = 'none';
     }
 
     function runTimer(s) {
