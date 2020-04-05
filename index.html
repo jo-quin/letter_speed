@@ -17,14 +17,16 @@
 
   <div id="screen-time-over">
     <h1>Time Over!</h1>
+    <h1 id="score"></h1>
   </div>
 
   <script type="text/javascript">
-    document.onkeydown = checkLetter;
+    document.onkeydown = checkInput;
     document.getElementById('start').onclick = startGame;
 
     var currentLetter = null;
-    var seconds = 60
+    var seconds = 60;
+    var points = 0;
 
     function startGame() {
       hideStartButton();
@@ -35,15 +37,19 @@
     function endGame() {
       document.getElementById('screen-game').style.display = 'none';
       document.getElementById('screen-time-over').style.display = 'block';
+      document.getElementById('score').innerHTML = `Your score: ${points}`
     }
 
-    function checkLetter(e) {
+    function checkInput(e) {
       if (e.key == currentLetter) {
+        points++;
         outputColor('correct');
       } else {
+        points--;
         outputColor('wrong');
       }
       changeLetter();
+      console.log(points);
     }
 
     function changeLetter() {
