@@ -20,7 +20,7 @@
     var seconds = 60
 
     function startGame() {
-      startTimer(seconds);
+      runTimer(seconds);
       changeLetter();
     }
 
@@ -56,17 +56,24 @@
       document.getElementById('letter').classList.add(output);
     }
 
-    function startTimer(s) {
+    function runTimer(s) {
       updateTimer(s);
 
-      setInterval(function() {
+      var timer = setInterval(function() {
         s--;
         updateTimer(s);
+        if (s == '0') {
+          stopTimer(timer);
+        }
       }, 1000);
     }
 
     function updateTimer(s) {
       document.getElementById("timer").innerHTML = s;
+    }
+
+    function stopTimer(t) {
+      clearInterval(t);
     }
   </script>
 </body>
