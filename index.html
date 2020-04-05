@@ -9,8 +9,15 @@
 
 <body>
   <button type="button" id="start">START</button>
-  <h1 id="letter"></h1>
-  <h1 id="timer"></h1>
+
+  <div id="screen-game">
+    <h1 id="letter"></h1>
+    <h1 id="timer"></h1>
+  </div>
+
+  <div id="screen-time-over">
+    <h1>Time Over!</h1>
+  </div>
 
   <script type="text/javascript">
     document.onkeydown = checkLetter;
@@ -23,6 +30,11 @@
       hideStartButton();
       runTimer(seconds);
       changeLetter();
+    }
+
+    function endGame() {
+      document.getElementById('screen-game').style.display = 'none';
+      document.getElementById('screen-time-over').style.display = 'block';
     }
 
     function checkLetter(e) {
@@ -80,6 +92,7 @@
 
     function stopTimer(t) {
       clearInterval(t);
+      endGame();
     }
   </script>
 </body>

@@ -35,3 +35,7 @@
   animation-name: wrong;
   animation-duration: 0.5s;
 }
+
+#screen-time-over {
+  display: none;
+}
