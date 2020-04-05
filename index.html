@@ -42,14 +42,23 @@
 
     function checkInput(e) {
       if (e.key == currentLetter) {
-        points++;
+        addPoint();
         outputColor('correct');
       } else {
-        points--;
+        subtractPoint();
         outputColor('wrong');
       }
       changeLetter();
-      console.log(points);
+    }
+
+    function addPoint() {
+      points++;
+    }
+
+    function subtractPoint() {
+      if (points !== 0) {
+        points--;
+      }
     }
 
     function changeLetter() {
