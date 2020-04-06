@@ -21,7 +21,6 @@
   </div>
 
   <script type="text/javascript">
-    document.onkeydown = checkInput;
     document.getElementById('start').onclick = startGame;
 
     var currentLetter = null;
@@ -29,6 +28,7 @@
     var points = 0;
 
     function startGame() {
+      document.onkeydown = checkInput;
       hideStartButton();
       runTimer(seconds);
       changeLetter();
