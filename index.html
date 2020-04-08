@@ -18,10 +18,13 @@
   <div id="screen-time-over">
     <h1>Time Over!</h1>
     <h1 id="score"></h1>
+    <h1>Play again?</h1>
+    <button type="button" id="restart">Restart</button>
   </div>
 
   <script type="text/javascript">
     document.getElementById('start').onclick = startGame;
+    document.getElementById('restart').onclick = restartGame;
 
     var currentLetter = null;
     var seconds = 60;
@@ -34,10 +37,18 @@
       changeLetter();
     }
 
+    function restartGame() {
+      hideScreenTimeOver();
+      document.getElementById('screen-game').style.display = 'block';
+      points = 0;
+      startGame();
+    }
+
     function endGame() {
       document.getElementById('screen-game').style.display = 'none';
+      document.getElementById('letter').classList.remove('correct', 'wrong');
       document.getElementById('screen-time-over').style.display = 'block';
-      document.getElementById('score').innerHTML = `Your score: ${points}`
+      document.getElementById('score').innerHTML = `Your score: ${points}`;
     }
 
     function checkInput(e) {
@@ -87,6 +98,15 @@
     function hideStartButton() {
       document.getElementById('start').disabled = true;
       document.getElementById('start').style.display = 'none';
+    }
+
+    function showStartButton() {
+      document.getElementById('start').disabled = false;
+      document.getElementById('start').style.display = 'block';
+    }
+
+    function hideScreenTimeOver() {
+      document.getElementById('screen-time-over').style.display = 'none';
     }
 
     function runTimer(s) {
