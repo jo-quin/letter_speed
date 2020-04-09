@@ -2,28 +2,26 @@ document.getElementById('start').onclick = startGame;
 document.getElementById('restart').onclick = restartGame;
 
 var currentLetter = null;
-var seconds = 5;
+var seconds = 60;
 var points = 0;
 
 function startGame() {
-  document.onkeydown = checkInput;
   hideStartButton();
   runTimer(seconds);
-  changeLetter();
+  displayNewLetter();
+  document.onkeydown = checkInput;
+}
+
+function endGame() {
+  hideScreenGame();
+  showScreenTimeOver();
 }
 
 function restartGame() {
   hideScreenTimeOver();
-  document.getElementById('screen-game').style.display = 'block';
-  points = 0;
+  showScreenGame();
+  resetPoints();
   startGame();
-}
-
-function endGame() {
-  document.getElementById('screen-game').style.display = 'none';
-  document.getElementById('letter').classList.remove('correct', 'wrong');
-  document.getElementById('screen-time-over').style.display = 'block';
-  document.getElementById('score').innerHTML = `Your score: ${points}`;
 }
 
 function checkInput(e) {
@@ -34,7 +32,12 @@ function checkInput(e) {
     subtractPoint();
     outputColor('wrong');
   }
-  changeLetter();
+  displayNewLetter();
+}
+
+function displayNewLetter() {
+  currentLetter = newRandomLetter();
+  document.getElementById("letter").innerHTML = currentLetter;
 }
 
 function addPoint() {
@@ -47,19 +50,6 @@ function subtractPoint() {
   }
 }
 
-function changeLetter() {
-  currentLetter = newRandomLetter();
-  document.getElementById("letter").innerHTML = currentLetter;
-}
-
-function newRandomLetter() {
-  return String.fromCharCode(getRandomArbitrary(97, 123));
-}
-
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
 function outputColor(output) {
   document.getElementById('letter').classList.remove('correct', 'wrong');
 
@@ -68,6 +58,14 @@ function outputColor(output) {
   void document.getElementById('letter').offsetWidth;
 
   document.getElementById('letter').classList.add(output);
+}
+
+function newRandomLetter() {
+  return String.fromCharCode(getRandomCharacter(97, 123));
+}
+
+function getRandomCharacter(min, max) {
+  return Math.random() * (max - min) + min;
 }
 
 function hideStartButton() {
@@ -82,6 +80,24 @@ function showStartButton() {
 
 function hideScreenTimeOver() {
   document.getElementById('screen-time-over').style.display = 'none';
+}
+
+function showScreenTimeOver() {
+  document.getElementById('screen-time-over').style.display = 'block';
+  document.getElementById('score').innerHTML = `Your score: ${points}`;
+}
+
+function hideScreenGame() {
+  document.getElementById('screen-game').style.display = 'none';
+  document.getElementById('letter').classList.remove('correct', 'wrong');
+}
+
+function showScreenGame() {
+  document.getElementById('screen-game').style.display = 'block';
+}
+
+function resetPoints() {
+  points = 0;
 }
 
 function runTimer(s) {
