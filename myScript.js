@@ -1,13 +1,33 @@
-document.getElementById('start').onclick = startGame;
+document.getElementById('start').onclick = startCountdown;
 document.getElementById('restart').onclick = restartGame;
 
 var currentLetter = null;
+var countdownSeconds = 3;
 var seconds = 60;
 var points = 0;
 
-function startGame() {
+function startCountdown() {
   hideStartButton();
+  showScreenCountdown();
+  startGameAfterCountdown(countdownSeconds);
+}
+
+function startGameAfterCountdown(c) {
+  updateCountdown(c);
+  var timer = setInterval(function() {
+    c--;
+    updateCountdown(c);
+    if (c == '0') {
+      clearInterval(timer);
+      hideScreenCountdown();
+      startGame();
+    }
+  }, 1000);
+}
+
+function startGame() {
   runTimer(seconds);
+  showScreenGame();
   displayNewLetter();
   document.onkeydown = checkInput;
 }
@@ -19,9 +39,8 @@ function endGame() {
 
 function restartGame() {
   hideScreenTimeOver();
-  showScreenGame();
   resetPoints();
-  startGame();
+  startCountdown();
 }
 
 function checkInput(e) {
@@ -96,6 +115,14 @@ function showScreenGame() {
   document.getElementById('screen-game').style.display = 'block';
 }
 
+function hideScreenCountdown() {
+  document.getElementById('countdown').style.display = 'none';
+}
+
+function showScreenCountdown() {
+  document.getElementById('countdown').style.display = 'block';
+}
+
 function resetPoints() {
   points = 0;
 }
@@ -119,4 +146,8 @@ function updateTimer(s) {
 function stopTimer(t) {
   clearInterval(t);
   endGame();
+}
+
+function updateCountdown(c) {
+  document.getElementById('countdown').innerHTML = c;
 }
