@@ -48,7 +48,6 @@ function checkInput(e) {
     addPoint();
     outputColor('correct');
   } else {
-    subtractPoint();
     outputColor('wrong');
   }
   displayNewLetter();
@@ -61,12 +60,6 @@ function displayNewLetter() {
 
 function addPoint() {
   points++;
-}
-
-function subtractPoint() {
-  if (points !== 0) {
-    points--;
-  }
 }
 
 function outputColor(output) {
