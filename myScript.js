@@ -30,10 +30,11 @@ function startGame() {
   runTimer(seconds);
   showScreenGame();
   displayNewLetter();
-  document.onkeydown = checkInput;
+  document.addEventListener('keydown', checkInput);
 }
 
 function endGame() {
+  document.removeEventListener('keydown', checkInput);
   hideScreenGame();
   showCursor();
   showScreenTimeOver();
