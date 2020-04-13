@@ -1,28 +1,64 @@
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #f2f3f4;
+}
+
+.main-div {
+  background-color: #f2e4ff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-style: outset;
+  height: 70%;
+  width: 50%;
+  cursor: url('../images/pointer.png'), auto;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#screen-time-over {
+  display: none;
+}
+
+#screen-game {
+  display: none;
+}
+
+.button {
+  padding: 15px 25px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 24px;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  color: white;
+  background-color: #9cc5ff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  cursor: url('../images/pointer.png'), auto;
+}
+
+#letter {
+  padding: 30px;
+}
+
 @keyframes correct {
-  0% {
-    background: white;
-  }
-
   50% {
-    background: rgb(149, 238, 149);
-  }
-
-  100% {
-    background: white;
+    background: #54ff10;
   }
 }
 
 @keyframes wrong {
-  0% {
-    background: white;
-  }
-
   50% {
-    background: rgb(255, 153, 153);
-  }
-
-  100% {
-    background: white;
+    background: #bc1c00;
   }
 }
 
@@ -36,6 +72,6 @@
   animation-duration: 0.5s;
 }
 
-#screen-time-over {
-  display: none;
+.hide-cursor {
+  cursor: none;
 }
