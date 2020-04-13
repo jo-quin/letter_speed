@@ -5,25 +5,29 @@
   <meta charset="utf-8">
   <title>letter speed</title>
   <link rel="stylesheet" href="css/master.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <button type="button" id="start">START</button>
+  <div class="main-div" id="main-div">
+    <button class="button centered" type="button" id="start">START</button>
 
-  <div id="screen-countdown">
-    <h1 id="countdown"></h1>
-  </div>
+    <div class="centered" id="screen-countdown">
+      <h1 id="countdown"></h1>
+    </div>
 
-  <div id="screen-game">
-    <h1 id="letter"></h1>
-    <h1 id="timer"></h1>
-  </div>
+    <div class="centered" id="screen-game">
+      <h1 id="letter"></h1>
+      <h1 id="timer"></h1>
+    </div>
 
-  <div id="screen-time-over">
-    <h1>Time Over!</h1>
-    <h1 id="score"></h1>
-    <h1>Play again?</h1>
-    <button type="button" id="restart">Restart</button>
+    <div class="centered" id="screen-time-over">
+      <h1>Time Over!</h1>
+      <h1 id="score"></h1>
+      <div>
+        <button class="button" type="button" id="restart">Play Again!!!</button>
+      </div>
+    </div>
   </div>
 
   <script src="myScript.js"></script>

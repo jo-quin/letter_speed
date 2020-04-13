@@ -7,6 +7,7 @@ var seconds = 60;
 var points = 0;
 
 function startCountdown() {
+  hideCursor();
   hideStartButton();
   showScreenCountdown();
   startGameAfterCountdown(countdownSeconds);
@@ -34,6 +35,7 @@ function startGame() {
 
 function endGame() {
   hideScreenGame();
+  showCursor();
   showScreenTimeOver();
 }
 
@@ -114,6 +116,14 @@ function hideScreenCountdown() {
 
 function showScreenCountdown() {
   document.getElementById('countdown').style.display = 'block';
+}
+
+function hideCursor() {
+  document.getElementById('main-div').classList.add('hide-cursor');
+}
+
+function showCursor() {
+  document.getElementById('main-div').classList.remove('hide-cursor');
 }
 
 function resetPoints() {
