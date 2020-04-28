@@ -6,26 +6,40 @@
   <title>letter speed</title>
   <link rel="stylesheet" href="css/master.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/stimulus/dist/stimulus.umd.js"></script>
+  <script>
+    (() => {
+      const application = Stimulus.Application.start()
+
+      application.register("hello-stimulus", class extends Stimulus.Controller {
+        connect() {
+          console.log("Hello, Stimulus!")
+        }
+      })
+    })()
+  </script>
 </head>
 
 <body>
-  <div class="main-div" id="main-div">
-    <button class="button centered" type="button" id="start">START</button>
+  <div data-controller="hello-stimulus">
+    <div class="main-div" id="main-div">
+      <button class="button centered" type="button" id="start">START</button>
 
-    <div class="centered" id="screen-countdown">
-      <h1 id="countdown"></h1>
-    </div>
+      <div class="centered" id="screen-countdown">
+        <h1 id="countdown"></h1>
+      </div>
 
-    <div class="centered" id="screen-game">
-      <h1 id="letter"></h1>
-      <h1 id="timer"></h1>
-    </div>
+      <div class="centered" id="screen-game">
+        <h1 id="letter"></h1>
+        <h1 id="timer"></h1>
+      </div>
 
-    <div class="centered" id="screen-time-over">
-      <h1>Time Over!</h1>
-      <h1 id="score"></h1>
-      <div>
-        <button class="button" type="button" id="restart">Play Again!!!</button>
+      <div class="centered" id="screen-time-over">
+        <h1>Time Over!</h1>
+        <h1 id="score"></h1>
+        <div>
+          <button class="button" type="button" id="restart">Play Again!!!</button>
+        </div>
       </div>
     </div>
   </div>
